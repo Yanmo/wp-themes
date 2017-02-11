@@ -1,10 +1,14 @@
-<?php get_header(); ?>   
+<?php get_header(); ?>
 		<div class="content">
 			<?php if(have_posts()) : ?>
 			<?php while(have_posts()) : the_post(); ?>
 			<div class="post-main">
-				<div class="date"><?php the_date(); ?></div>
-				<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+				<div class="date">
+					<!-- <span class="year"><?php the_time("Y"); ?></span> -->
+					<span class="month"><?php the_time("m"); ?></span>
+					<span class="day"><?php the_time("d"); ?></span>
+				</div>
+				<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 				<div class="post">
 					<?php the_content(); ?>
 				</div>
@@ -14,11 +18,11 @@
 				<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&laquo;', 'Previous post link', 'WhitePaper' ) . '</span> %title' ); ?></span>
 				<span class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&raquo;', 'Next post link', 'WhitePaper' ) . '</span>' ); ?></span>
 			</div>
-			<?php //comments_template(); ?>
+			<?php comments_template(); ?>
 			<?php endwhile; ?>
 			<?php endif; ?>
 		</div>
-		<aside class="widget">	
+		<aside class="widget">
 			<div class="row">
 				<div class="sidebar-left span2">
 					<center>
@@ -42,5 +46,5 @@
 			</div>
 		</aside>
 	</div>
-	
+
 <?php get_footer(); ?>

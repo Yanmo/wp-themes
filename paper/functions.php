@@ -19,7 +19,7 @@ function whitepaper_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'whitepaper_widgets_init' );
-function true_style_frontend() { wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css' );}
+function true_style_frontend() { wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css?' . filemtime(get_stylesheet_directory() . '/style.css'));}
 add_action( 'wp_enqueue_scripts', 'true_style_frontend' );
 function whitepaper_wp_title( $title, $sep ) {
 	global $paged, $page;
@@ -51,10 +51,18 @@ add_action('init', function() {
 	remove_filter('the_excerpt', 'wpautop');
 	remove_filter('the_content', 'wpautop');
 });
- 
+
 add_filter('tiny_mce_before_init', function($init) {
 	$init['wpautop'] = false;
 	$init['apply_source_formatting'] = ture;
 	return $init;
 });
+
+/* for markdown plugins*/
+remove_filter('the_content','wpautop');
+add_filter('the_content','wpautop_nobr');
+function wpautop_nobr($txt) {
+    return wpautop($txt, false);
+}
+
 ?>
