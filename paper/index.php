@@ -4,11 +4,7 @@
 				<?php while (have_posts()) : the_post(); ?>
 			<div <?php post_class(); ?>><?php comments_template(); ?>
 			<div class="post-main">
-				<div class="date">
-					<!-- <span class="year"><?php the_time("Y"); ?></span> -->
-					<span class="month"><?php the_time("m"); ?></span>
-					<span class="day"><?php the_time("d"); ?></span>
-				</div>
+				<div class="post-date"><?php the_time("Y"); ?>/<?php the_time("m"); ?>/<?php the_time("d"); ?></div>
 				<h1 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 				<div class="post">
 					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
@@ -23,10 +19,10 @@
 		<?php if(function_exists('wp_pagenavi')) : ?>
 		<div class="navigation"><?php wp_pagenavi(); ?></div>
 		<?php else : ?>
-<div class="navigation">
-	<div class="alignleft"><?php previous_posts_link(__('&laquo; Newer')) ?></div>
-	<div class="alignright"><?php next_posts_link(__('Older &raquo;')) ?></div>
-</div>
+		<div class="navigation">
+			<div class="alignleft"><?php previous_posts_link(__('&laquo; Newer')) ?></div>
+			<div class="alignright"><?php next_posts_link(__('Older &raquo;')) ?></div>
+		</div>
 <?php endif; ?>
 			<?php endif; ?>
 		</div>
