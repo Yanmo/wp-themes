@@ -9,8 +9,8 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
- * @subpackage Twenty_Seventeen
+ * @package seeek.org
+ * @subpackage wp bootstrap theme
  * @since 1.0
  * @version 1.0
  */
